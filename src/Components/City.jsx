@@ -10,7 +10,6 @@ export default function City() {
           fetch(`https://api.openweathermap.org/data/2.5/weather?q=${ciudad}&units=metric&lang=es&appid=${apiKey}`)
           .then(r => r.json())
           .then(recurso => {
-            
              if(recurso.main !== undefined){
               const ciudad = {
                 min: Math.round(recurso.main.temp_min),
@@ -41,6 +40,7 @@ export default function City() {
       onSearch('san francisco,santiago, chile')
       onSearch('Long Island, estados unidos')
       onSearch('Uruguay')
+      
       },[]);
  
     return (
