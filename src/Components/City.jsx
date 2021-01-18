@@ -7,7 +7,7 @@ export default function City() {
   ]);
   const [load, setLoad] = useState(false) 
       function onSearch(ciudad){
-          fetch(`http://api.openweathermap.org/data/2.5/weather?q=${ciudad}&units=metric&lang=es&appid=${apiKey}`)
+          fetch(`https://api.openweathermap.org/data/2.5/weather?q=${ciudad}&units=metric&lang=es&appid=${apiKey}`)
           .then(r => r.json())
           .then(recurso => {
             console.log(recurso,'soy recurso')
