@@ -61,7 +61,7 @@ export default function City() {
                                <div className="card">
                                  <h2 style={{fontFamily:'Helvetica',fontSize:'50px'}}>{city.name}</h2>
                                  <h1>{city.temp}°C</h1>
-                                 <img src={`https://openweathermap.org/img/wn/${city.img}@2x.png`}></img>
+                                 <img src={`https://openweathermap.org/img/wn/${city.img}@2x.png`} alt='...'></img>
                                  <h3>{city.weather}</h3>
                                  <div style={{fontFamily:'Helvetica',fontSize:'12px'}}>
                                    <h6>Viento: {city.wind}Km/h          Humedad: {city.humidity}%</h6>   
