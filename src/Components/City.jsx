@@ -1,46 +1,13 @@
 import React, {useEffect,useState} from 'react'
 import './City.css'
-const apiKey = '4ae2636d8dfbdc3044bede63951a019b';
-export default function City() {
-  const [cities, setCities] = useState([
-      
-  ]);
-  const [load, setLoad] = useState(false) 
-      function onSearch(ciudad){
-          fetch(`https://api.openweathermap.org/data/2.5/weather?q=${ciudad}&units=metric&lang=es&appid=${apiKey}`)
-          .then(r => r.json())
-          .then(recurso => {
-             if(recurso.main !== undefined){
-              const ciudad = {
-                min: Math.round(recurso.main.temp_min),
-                max: Math.round(recurso.main.temp_max),
-                img: recurso.weather[0].icon,
-                id: recurso.id,
-                wind: recurso.wind.speed,
-                temp: Math.round(recurso.main.temp),
-                name: recurso.name,
-                weather: recurso.weather[0].description.charAt(0).toUpperCase() + recurso.weather[0].description.slice(1),
-                clouds: recurso.clouds.all,
-                latitud: recurso.coord.lat,
-                longitud: recurso.coord.lon,
-                humidity:recurso.main.humidity,
-              };
-              setCities(cities => [...cities, ciudad]);
-            } else {
-              alert("Ciudad no encontrada");
-            } 
-          })
-          .then(a =>{
-            setLoad(true)
-          })
-          
-      }
+
+export default function City({cities,load,onSearch}) {
+  
       useEffect(() => {
       onSearch('buenos aires,argentina');
       onSearch('san francisco,santiago, chile')
       onSearch('Long Island, estados unidos')
       onSearch('Uruguay')
-      
       },[]);
  
     return (
@@ -76,11 +43,11 @@ export default function City() {
           </div>
             
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-bs-slide="prev">
+  <a class="carousel-control-prev carrusel" href="#carouselExampleInterval" role="button" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Previous</span>
   </a>
-  <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-bs-slide="next">
+  <a class="carousel-control-next carrusel" href="#carouselExampleInterval" role="button" data-bs-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </a>
